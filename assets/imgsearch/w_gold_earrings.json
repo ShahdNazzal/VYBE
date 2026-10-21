@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "small gold hoop earrings on white background, jewelry product photography",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/66beb2c77e17.jpg",
+      "caption": "",
+      "source": "TAKE-UP Jewelry",
+      "original_width": "1800px",
+      "original_height": "1800px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5deb06270547.jpg",
+      "caption": "",
+      "source": "agmes",
+      "original_width": "2400px",
+      "original_height": "2400px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d397d35de895.jpg",
+      "caption": "",
+      "source": "Jenny Bird",
+      "original_width": "1400px",
+      "original_height": "1750px"
+    }
+  ]
+}

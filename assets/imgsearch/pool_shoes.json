@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "white leather sneakers, black heels, brown ankle boots, product photography",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1845c38368b6.png",
+      "caption": "Pink Stuart Weitzman rhinestone heels on marble with Coco Chanel perfume, roses, and luxury brand books; text: \"COCO Mademoiselle CHANEL PARIS,\" \"STUART WEITZMAN,\" \"CHANEL,\" \"Dior.\" Suitable for background image.",
+      "source": "Blend AI",
+      "original_width": "1402px",
+      "original_height": "1122px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ac4c66c74d0f.jpg",
+      "caption": "A person in gray jeans wearing brown lace-up leather combat boots with black chunky soles, sitting on stone steps.",
+      "source": "eBay",
+      "original_width": "1000px",
+      "original_height": "1146px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ea52eba28dc0.jpg",
+      "caption": "A short-haired woman in a black leather jacket, blue jeans, colorful socks, and black leather boots sits on concrete against a white brick wall. Suitable for background image",
+      "source": "Nomasei",
+      "original_width": "1219px",
+      "original_height": "1626px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2a393df45cb3.jpg",
+      "caption": "Katie Holmes walks on a sidewalk wearing a Harris Walz 2024 sweater. Suitable for background image.",
+      "source": "Who What Wear",
+      "original_width": "3463px",
+      "original_height": "4350px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e01333d6be0b.jpg",
+      "caption": "A pair of minimalist black leather sneakers on a plain white background, suitable for background image.",
+      "source": "COS",
+      "original_width": "2160px",
+      "original_height": "3240px"
+    }
+  ]
+}

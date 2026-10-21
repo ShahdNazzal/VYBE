@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "elegant champagne silk blouse on hanger, product photography, plain background",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/40674b46430e.jpg",
+      "caption": "",
+      "source": "Etsy",
+      "original_width": "1024px",
+      "original_height": "1536px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/fba60577c66d.png",
+      "caption": "",
+      "source": "SplitShire",
+      "original_width": "928px",
+      "original_height": "1152px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3c8afbb49aa2.jpg",
+      "caption": "",
+      "source": "بارلينا",
+      "original_width": "1000px",
+      "original_height": "1250px"
+    }
+  ]
+}

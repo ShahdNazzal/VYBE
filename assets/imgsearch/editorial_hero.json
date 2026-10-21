@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "elegant fashion editorial photo woman in burgundy coat, vogue magazine style",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9814ae15c985.jpg",
+      "caption": "",
+      "source": "Vogue",
+      "original_width": "2175px",
+      "original_height": "2175px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f90a1c448499.jpg",
+      "caption": "",
+      "source": "Vogue",
+      "original_width": "1080px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6ce84fad8c4f.jpg",
+      "caption": "",
+      "source": "British Vogue",
+      "original_width": "2560px",
+      "original_height": "3840px"
+    }
+  ]
+}

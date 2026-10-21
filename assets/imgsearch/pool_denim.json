@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "blue denim jeans and navy chinos trousers folded, product photography",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 3,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5b2ff1630a03.jpg",
+      "caption": "A man wearing a white t-shirt, navy blue pants, and white sneakers stands before a painted canvas backdrop, hands in pockets.",
+      "source": "Tellason",
+      "original_width": "1024px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/11bd72f3c262.jpg",
+      "caption": "A cheerful man in a blue plaid shirt and navy pants playfully climbing over a white porch railing, high clarity, no text, suitable for background image.",
+      "source": "Southern Tide",
+      "original_width": "1080px",
+      "original_height": "1619px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6933e6d2da42.jpg",
+      "caption": "A man wearing navy tailored trousers and brown tassel loafers walks against a white paneled wall, high clarity, no watermark, suitable for background image",
+      "source": "Peter Jackson",
+      "original_width": "1920px",
+      "original_height": "2603px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5f40a144f3ab.jpg",
+      "caption": "",
+      "source": "Vogue",
+      "original_width": "3036px",
+      "original_height": "2277px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b1f8d3d26e29.jpg",
+      "caption": "",
+      "source": "Faherty Brand",
+      "original_width": "2500px",
+      "original_height": "3333px"
+    }
+  ]
+}

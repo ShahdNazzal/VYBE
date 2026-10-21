@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "black wool blazer, beige trench coat, leather jacket on hangers, product photography",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/bcf9df1c4329.jpg",
+      "caption": "Gemini分析异常",
+      "source": "Baacal",
+      "original_width": "2424px",
+      "original_height": "3233px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/97c575ce7c03.jpg",
+      "caption": "A woman models a beige oversized trench coat with bow-tie closures, gold chain necklace, white background, product photography style.",
+      "source": "Amazon.com",
+      "original_width": "1398px",
+      "original_height": "1749px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/98d625ae8417.jpg",
+      "caption": "A handsome man in a beige trench coat stands on a rainy city street, with blurred lights and umbrellas in the background. suitable for background image",
+      "source": "Real Men Real Style",
+      "original_width": "1536px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/02d25a8a76a1.jpg",
+      "caption": "A person in a fluffy brown fur coat and green sweater stands in a sunlit doorway. Suitable for background image.",
+      "source": "Yves Salomon",
+      "original_width": "2000px",
+      "original_height": "2500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d773a7d654fe.jpg",
+      "caption": "Fashion model wearing a beige cropped trench jacket over a burgundy knit top and matching skirt.",
+      "source": "Mytheresa",
+      "original_width": "1094px",
+      "original_height": "1237px"
+    }
+  ]
+}

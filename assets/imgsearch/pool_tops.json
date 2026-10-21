@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "white cotton t-shirt and white silk blouse folded, product photography, plain background",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0f75a0b8ce65.jpg",
+      "caption": "A neatly folded white t-shirt on a white background; contains Dreamstime watermarks and text: \"dreamstime.com\", \"ID 361955949 © Kittichet Tungsubphokin\".",
+      "source": "Dreamstime",
+      "original_width": "1600px",
+      "original_height": "987px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6004bbf7d93a.jpg",
+      "caption": "A gray-haired middle-aged man in a plain white t-shirt and beige pants, studio product photography, clean light-gray background, no text.",
+      "source": "Mizzen+Main",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3de0afbe5f0c.jpg",
+      "caption": "A folded white and tan striped t-shirt, labeled \"Mizzen+Main, MEDIUM, Made in Peru,\" on white background; product photo, no watermark.",
+      "source": "Mizzen+Main",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cb9bed92513f.jpg",
+      "caption": "A red t-shirt on a wooden hanger against a light wall. Contains Alamy watermarks; not suitable for background image.",
+      "source": "Alamy",
+      "original_width": "866px",
+      "original_height": "1390px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/fcccbc94c4a9.jpg",
+      "caption": "A white long-sleeve striped dress shirt on hanger, label \"Paul Fredrick,\" tag \"V-4823,\" size 16½-34.",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    }
+  ]
+}

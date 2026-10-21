@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "black cat eye sunglasses product photo, plain background",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e277e38a9616.jpg",
+      "caption": "",
+      "source": "John Lewis",
+      "original_width": "1500px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/283d15fe5cc1.jpg",
+      "caption": "",
+      "source": "Harper's BAZAAR",
+      "original_width": "980px",
+      "original_height": "980px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/daa28aa0712e.png",
+      "caption": "",
+      "source": "look optic",
+      "original_width": "3000px",
+      "original_height": "3000px"
+    }
+  ]
+}

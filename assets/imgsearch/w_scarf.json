@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "grey wool scarf folded, product photography, plain background",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e72c73a05101.jpg",
+      "caption": "",
+      "source": "l'envers",
+      "original_width": "1000px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/58268bcebc00.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cc8f370f388c.jpg",
+      "caption": "",
+      "source": "l'envers",
+      "original_width": "2048px",
+      "original_height": "3072px"
+    }
+  ]
+}

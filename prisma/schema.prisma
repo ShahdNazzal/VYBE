@@ -1,0 +1,71 @@
+// VYBE — AI Fashion Styling Platform
+// Prisma schema (SQLite). In a Supabase/PostgreSQL deployment the same schema
+// works by switching the datasource provider to "postgresql".
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  items        ClothingItem[]
+  outfits      Outfit[]
+
+  @@map("users")
+}
+
+// One clothing item owned by exactly one user (row-level ownership enforced
+// in application services — every query is scoped by userId).
+model ClothingItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  category  String // tops | bottoms | dresses | outerwear | shoes | accessories
+  colorway  String? // e.g. "Cream", "Mid Wash Denim"
+  styleTag  String? // e.g. "Minimalist", "Streetwear", "Classic"
+  season    String? // spring | summer | fall | winter | all-season
+  brand     String?
+  imageUrl  String // /api/uploads/<userId>/<file> or external URL
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, category])
+  @@index([userId, createdAt])
+  @@map("clothing_items")
+}
+
+// One generated look. Three outfits share the same generationId.
+// `saved` marks whether the user kept it in their lookbook.
+model Outfit {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  generationId String // groups the 2-3 results produced by one generation run
+  name         String
+  occasion     String // e.g. "Office Day", "Date Night"
+  style        String // e.g. "Minimalist", "Streetwear"
+  explanation  String // stylist's rationale for the combination
+  itemIds      String // JSON string[] — clothing item ids used
+  itemsJson    String // JSON snapshot of item details at generation time
+  alternatives String? // JSON alternative item suggestions [{ itemId, note }]
+  source       String   @default("ai") // ai | fallback
+  saved        Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId, generationId])
+  @@index([userId, saved, createdAt])
+  @@map("outfits")
+}

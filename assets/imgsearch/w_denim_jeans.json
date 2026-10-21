@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "query": "blue denim jeans folded flat lay, product photography",
+  "count": 3,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8484187fccee.jpg",
+      "caption": "",
+      "source": "DepositPhotos",
+      "original_width": "1351px",
+      "original_height": "1700px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2c5a6780d0e7.jpg",
+      "caption": "",
+      "source": "Squareshot",
+      "original_width": "1000px",
+      "original_height": "800px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/87e2d06f585c.jpg",
+      "caption": "",
+      "source": "Shutterstock",
+      "original_width": "1500px",
+      "original_height": "1101px"
+    }
+  ]
+}

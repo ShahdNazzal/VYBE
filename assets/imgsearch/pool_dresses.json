@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "little black dress and black pleated skirt, elegant product photography",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d69d360b6c0b.jpg",
+      "caption": "A woman models a black strapless corset mini dress with choker neck detail and flowing skirt, standing against a plain background.",
+      "source": "Lady Black Tie",
+      "original_width": "800px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0e7914bb4a42.jpg",
+      "caption": "A curly-haired woman in a black dress with white headband walks a lush garden path holding a cupcake. Suitable for background image.",
+      "source": "CAVA Athleisure",
+      "original_width": "1080px",
+      "original_height": "1440px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ea92bbcff26d.png",
+      "caption": "A smiling woman with braided hair wears a black vest and pleated skirt. Suitable for background image.",
+      "source": "yellow sub trading",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/37605765b37e.jpg",
+      "caption": "A woman models a black off-shoulder midi dress with white twist neckline, standing before a pink curtain backdrop.",
+      "source": "icantchoose",
+      "original_width": "900px",
+      "original_height": "1312px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/36abe9860b16.jpg",
+      "caption": "Woman in black pleated dress with white collar poses in a café; wall text: \"BISTRO, CAFE & PHOTOGRAPHY, EST.2021, Jack Daniel's The Family\".",
+      "source": "Belchic",
+      "original_width": "1184px",
+      "original_height": "1588px"
+    }
+  ]
+}

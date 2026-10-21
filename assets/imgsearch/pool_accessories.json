@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "query": "tan leather handbag, sunglasses, cashmere scarf, gold hoop earrings, product photography",
+  "count": 5,
+  "ranked": true,
+  "captioned_count": 5,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8809a7046fa7.jpg",
+      "caption": "A model in a brown coat, white trousers, and red accessories poses. Suitable for background image.",
+      "source": "COS",
+      "original_width": "1260px",
+      "original_height": "1889px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/faa8815d17ff.jpg",
+      "caption": "Smiling Black person covering eyes with two pink-white gerbera daisies, wearing colorful tweed jacket, staircase background. Suitable for background image.",
+      "source": "Chanel",
+      "original_width": "1056px",
+      "original_height": "1246px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8371df65bba3.jpg",
+      "caption": "A yellow Longchamp handbag rests on a white ledge before a classic townhouse with red door, wisteria, and iron railing. suitable for background image",
+      "source": "Liberty",
+      "original_width": "1638px",
+      "original_height": "2048px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/91841f39eeb3.jpg",
+      "caption": "A large black LOEWE leather tote bag with geometric cross-stitch panels, photographed against a plain light gray background. Text: \"LOEWE\".",
+      "source": "Net-a-Porter",
+      "original_width": "2000px",
+      "original_height": "2666px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/035969bcf367.jpg",
+      "caption": "A fashion editorial: model seated on striped sofa wearing navy blazer, yellow sweater, floral pants, fur-trimmed boots, brown leather bag beside. Suitable for background image.",
+      "source": "Acne Studios",
+      "original_width": "1280px",
+      "original_height": "1920px"
+    }
+  ]
+}
