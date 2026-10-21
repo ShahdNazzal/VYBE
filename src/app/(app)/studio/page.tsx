@@ -3,10 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Ban, Check, Loader2, Lock, Sparkles, Wand2 } from "lucide-react";
+import { Ban, Check, Loader2, Lock, Palette, Sparkles, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
+import { ColorWheel } from "@/components/color-wheel";
 import { CATEGORIES, CATEGORY_LABELS, OCCASIONS, STYLE_TAGS } from "@/lib/domain";
 import type { Item } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -194,6 +195,52 @@ export default function StudioPage() {
                   {tag}
                 </button>
               ))}
+            </div>
+          </section>
+
+          {/* Color wheel — your closet, plotted on the wheel */}
+          <section aria-labelledby="wheel-heading">
+            <div className="mb-3 flex items-baseline justify-between">
+              <h2 id="wheel-heading" className="flex items-center gap-2 font-display text-xl font-bold text-espresso">
+                <Palette className="h-4 w-4 text-wine" /> The color wheel
+              </h2>
+              <p className="text-xs text-muted-foreground">your closet, in hues</p>
+            </div>
+            <div className="rounded-2xl border border-sand bg-white/70 p-5">
+              <div className="grid items-center gap-6 md:grid-cols-[340px_minmax(0,1fr)]">
+                <ColorWheel items={items} />
+                <div className="min-w-0 space-y-4 text-sm leading-relaxed text-muted-foreground">
+                  <p>
+                    Every piece you own carries a color. VYBE plots them on the wheel and builds
+                    looks the way stylists do — with harmony, not accident.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-3 w-3 shrink-0 rounded-full border border-wine/40 bg-wine/25" />
+                      <span>
+                        <span className="font-semibold text-foreground">Complementary</span> — two
+                        hues opposite each other (wine &amp; emerald, navy &amp; camel). Confident
+                        contrast, always balanced.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-3 w-3 shrink-0 rounded-full border border-blush-deep/50 bg-blush" />
+                      <span>
+                        <span className="font-semibold text-foreground">Analogous &amp; tonal</span>
+                        {" "}— neighbors on the wheel. Quiet, editorial, effortlessly expensive.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-3 w-3 shrink-0 rounded-full border border-sand bg-gradient-to-r from-cream to-charcoal" />
+                      <span>
+                        <span className="font-semibold text-foreground">Neutral + accent</span> —
+                        cream, camel, navy or denim grounding one bright hue. The everyday uniform
+                        of the well-dressed.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 

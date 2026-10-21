@@ -14,6 +14,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { analyzeHarmony, parseColorway, type ColorFamily } from "@/lib/colors";
 import { CATEGORY_LABELS, type Category } from "@/lib/domain";
 import { parseOutfitAlternatives, parseOutfitItems, type Item, type Outfit } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -45,6 +46,16 @@ export function OutfitCard({
   const items = parseOutfitItems(current);
   const alternatives = parseOutfitAlternatives(current);
   const itemMap = new Map<string, Item>(items.map((item) => [item.id, item]));
+
+  // Color palette of the look, parsed from each piece's colorway.
+  const paletteFamilies: (ColorFamily | null)[] = items.map((item) => parseColorway(item.colorway));
+  const paletteDots: { name: string; hex: string }[] = [];
+  for (const family of paletteFamilies) {
+    if (family && !paletteDots.some((dot) => dot.name === family.name)) {
+      paletteDots.push({ name: family.name, hex: family.hex });
+    }
+  }
+  const harmony = analyzeHarmony(paletteFamilies);
 
   async function toggleSave() {
     setSaving(true);
@@ -243,6 +254,22 @@ export function OutfitCard({
 
       {/* Styling rationale */}
       <div className="space-y-3 border-t border-sand/70 bg-cream/40 px-5 py-4">
+        {paletteDots.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2" title={harmony.note}>
+            <span className="eyebrow text-muted-foreground">Palette</span>
+            <span className="flex items-center gap-1">
+              {paletteDots.map((dot) => (
+                <span
+                  key={dot.name}
+                  title={dot.name}
+                  className="h-3.5 w-3.5 rounded-full border border-white shadow-sm"
+                  style={{ backgroundColor: dot.hex }}
+                />
+              ))}
+            </span>
+            <span className="text-[11px] italic text-wine">{harmony.label}</span>
+          </div>
+        )}
         <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
           {current.explanation}
         </p>

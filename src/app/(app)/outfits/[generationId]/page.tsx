@@ -25,6 +25,7 @@ export default async function OutfitResultsPage({
 
   const outfits: Outfit[] = rows.map((row) => ({
     ...row,
+    source: row.source as Outfit["source"],
     createdAt: row.createdAt.toISOString(),
     updatedAt: row.updatedAt.toISOString(),
   }));

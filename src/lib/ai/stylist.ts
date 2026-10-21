@@ -1,13 +1,18 @@
 // VYBE AI Stylist engine.
 //
 // - Builds a structured prompt from the user's real wardrobe.
-// - Calls the LLM (z-ai-web-dev-sdk) on the SERVER ONLY.
+// - Calls the LLM on the SERVER ONLY, via the first available provider:
+//     1. Any OpenAI-compatible API — set OPENAI_API_KEY (+ optional
+//        OPENAI_BASE_URL / OPENAI_MODEL) in .env. Works with OpenAI,
+//        OpenRouter, Groq, DeepSeek, Together, local Ollama, …
+//     2. z-ai-web-dev-sdk (Z.ai platform credential file).
 // - Validates every returned item id against the authenticated user's wardrobe.
 // - Falls back to a deterministic rule-based stylist when the AI service is
 //   unavailable or returns unusable output. The fallback is clearly labeled
 //   (source: "fallback") and never pretends to be AI-generated.
 
 import { CATEGORY_LABELS, SEASON_LABELS, type Category, type Season } from "@/lib/domain";
+import { analyzeHarmony, harmonyPhrase, parseColorway, type ColorFamily } from "@/lib/colors";
 
 export interface WardrobeItem {
   id: string;
@@ -43,15 +48,27 @@ export interface StylistResult {
 /* ------------------------------------------------------------------ */
 
 function compactItem(item: WardrobeItem) {
+  const family = parseColorway(item.colorway);
   return {
     id: item.id,
     name: item.name,
     category: item.category,
     color: item.colorway ?? undefined,
+    colorFamily: family?.name,
+    colorWheelPosition: family
+      ? family.neutral
+        ? "neutral"
+        : Math.round(family.hue)
+      : undefined,
     style: item.styleTag ?? undefined,
     season: item.season ?? undefined,
     brand: item.brand ?? undefined,
   };
+}
+
+/** Chromatic families of a set of items, for harmony math. */
+function itemFamilies(items: WardrobeItem[]): (ColorFamily | null)[] {
+  return items.map((item) => parseColorway(item.colorway));
 }
 
 export function buildStylistMessages(
@@ -70,7 +87,7 @@ STRICT RULES:
 2. Each outfit uses 2 to 5 items and must read as a complete look: for most looks that means a top + a bottom, or a dress; shoes are strongly encouraged; outerwear and accessories refine it.
 3. Respect every constraint: never use excluded categories or excluded item ids. If a must-include item id is given, it MUST appear in every outfit unless physically impossible.
 4. Make the 3 outfits meaningfully different from each other (different pieces and moods, not reshuffles of the same look).
-5. Consider color harmony, proportion, formality of the occasion, and the season of each item.
+5. COLOR HARMONY — build each look around the color wheel: prefer complementary (opposite hues), analogous (neighboring hues), triadic, or a neutral base with ONE accent hue. Avoid 3+ unrelated hues in one look. Navy, denim, white, cream, beige, camel, grey and black count as neutrals that ground any hue. Each item carries a "colorWheelPosition": either "neutral" or its hue (0=red, 30=orange, 60=yellow, 120=green, 210=blue, 300=magenta). Name the color logic in the explanation (e.g. "a complementary pairing of wine and emerald"). Also weigh proportion, formality of the occasion, and the season of each item.
 6. Write in an elegant, confident editorial voice. Keep each explanation to 2-3 sentences: why it works for the occasion, the color/silhouette logic, and one concrete styling note.
 7. For alternatives, suggest ONE swap per outfit from wardrobe items NOT already in that outfit, with a short note.
 8. Respond with STRICT JSON only. No markdown fences, no commentary. Exact shape:
@@ -212,6 +229,11 @@ function scoreItem(item: WardrobeItem, style: string): number {
   return score;
 }
 
+/** Classical color-wheel coherence of a set of items (0..1). */
+function harmonyScoreOf(items: WardrobeItem[]): number {
+  return analyzeHarmony(items.map((item) => parseColorway(item.colorway))).score;
+}
+
 function topK<T>(items: T[], k: number, score: (t: T) => number, salt = 0): T[] {
   return [...items]
     .map((item, index) => ({ item, key: score(item) + ((index + salt) % 3) * 0.01 }))
@@ -261,13 +283,36 @@ function buildFallbackLook(
     ? mustInclude.category === "dresses"
     : dresses.length > 0 && (tops.length === 0 || bottoms.length === 0 || rotation === 1);
 
+  /** Rotate through a pool but prefer the candidate that harmonizes with the anchor pieces. */
+  const harmonizedPick = (
+    pool: WardrobeItem[],
+    anchor: WardrobeItem[],
+    rotation: number
+  ): WardrobeItem | undefined => {
+    if (pool.length === 0) return undefined;
+    const start = rotation % pool.length;
+    const window = [pool[start], pool[(start + 1) % pool.length], pool[(start + 2) % pool.length]];
+    if (anchor.length === 0) return window[0];
+    let best = window[0];
+    let bestKey = -Infinity;
+    for (const candidate of window) {
+      const key = scoreItem(candidate, style) + 1.5 * harmonyScoreOf([...anchor, candidate]);
+      if (key > bestKey) {
+        bestKey = key;
+        best = candidate;
+      }
+    }
+    return best;
+  };
+
   if (useDress) {
     take(dresses[rotation % Math.max(dresses.length, 1)]);
+    take(harmonizedPick(shoesPool, [...picks], rotation + 1));
   } else {
     take(tops[rotation % Math.max(tops.length, 1)]);
-    take(bottoms[(rotation + 1) % Math.max(bottoms.length, 1)]);
+    take(harmonizedPick(bottoms, [...picks], rotation + 1));
+    take(harmonizedPick(shoesPool, [...picks], rotation));
   }
-  take(shoesPool[(rotation + (useDress ? 1 : 0)) % Math.max(shoesPool.length, 1)]);
   if (rotation !== 2) take(outerwear[rotation % Math.max(outerwear.length, 1)]);
   if (rotation === 2) take(accessories[rotation % Math.max(accessories.length, 1)]);
 
@@ -284,10 +329,13 @@ function buildFallbackLook(
   const seasons = [...new Set(picks.map((item) => item.season).filter(Boolean))]
     .map((season) => SEASON_LABELS[season as Season] ?? season)
     .join(" / ");
+  const colorPhrase = harmonyPhrase(itemFamilies(picks));
 
   const explanation =
     `A ${style.toLowerCase()} leaning combination for ${occasion.toLowerCase()}: ${itemNames}. ` +
-    `Balanced proportions and a coherent palette keep the look intentional` +
+    (colorPhrase
+      ? `The palette follows the color wheel — ${colorPhrase} — so the tones agree at a glance. Balanced proportions keep the silhouette intentional`
+      : "Balanced proportions and a coherent palette keep the look intentional") +
     (seasons ? ` — curated for ${seasons.toLowerCase()} wear.` : ".");
 
   const altPool = usable.filter((item) => !used.has(item.id));
@@ -323,7 +371,61 @@ export function buildFallbackOutfits(
 /* LLM call with timeout + retry                                       */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Provider 1 — any OpenAI-compatible chat API, activated by OPENAI_API_KEY.
+ * No extra dependency: plain fetch against ${OPENAI_BASE_URL}/chat/completions.
+ */
+async function callOpenAICompatible(
+  messages: { role: "assistant" | "user"; content: string }[],
+  apiKey: string
+): Promise<string> {
+  const baseUrl = (
+    process.env.OPENAI_BASE_URL?.trim() || "https://api.openai.com/v1"
+  ).replace(/\/+$/, "");
+  const model = process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini";
+
+  // OpenAI-compatible APIs expect the leading instruction as role "system".
+  const mapped = messages.map((message, index) =>
+    index === 0 && message.role === "assistant"
+      ? { role: "system" as const, content: message.content }
+      : message
+  );
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 75_000);
+  try {
+    const response = await fetch(`${baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({ model, messages: mapped, temperature: 0.8 }),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      throw new Error(
+        `AI provider returned ${response.status}: ${detail.slice(0, 300)}`
+      );
+    }
+    const data = (await response.json()) as {
+      choices?: { message?: { content?: string } }[];
+    };
+    const content = data?.choices?.[0]?.message?.content ?? "";
+    if (!content.trim()) throw new Error("Empty response from AI provider");
+    return content;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function callLLM(messages: { role: "assistant" | "user"; content: string }[]): Promise<string> {
+  // Provider 1: user-supplied OpenAI-compatible key (self-hosting friendly).
+  const customKey = process.env.OPENAI_API_KEY?.trim();
+  if (customKey) return callOpenAICompatible(messages, customKey);
+
+  // Provider 2: Z.ai platform SDK.
   const { default: ZAI } = await import("z-ai-web-dev-sdk");
   const zai = await ZAI.create();
 
@@ -496,8 +598,13 @@ Rules:
     console.error("[stylist] replace attempt failed:", error instanceof Error ? error.message : error);
   }
 
-  // Deterministic fallback: swap by style affinity, then season compatibility.
-  const pick = topK(candidates, candidates.length, (item) => scoreItem(item, style))[0];
+  // Deterministic fallback: style affinity + color harmony with the kept pieces.
+  const kept = outfitItems.filter((item) => item.id !== replaceItemId);
+  const pick = topK(
+    candidates,
+    candidates.length,
+    (item) => scoreItem(item, style) + 1.5 * harmonyScoreOf([...kept, item])
+  )[0];
   return {
     newItemId: pick.id,
     reason: `Swapped in ${pick.name} to keep the ${style.toLowerCase()} direction while refreshing the ${CATEGORY_LABELS[target.category as Category] ?? target.category}.`,

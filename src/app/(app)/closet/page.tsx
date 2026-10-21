@@ -63,7 +63,8 @@ export default function ClosetPage() {
   }, [fetchItems]);
 
   const availableStyles = useMemo(
-    () => [...new Set(items.map((item) => item.styleTag).filter(Boolean))].sort(),
+    () =>
+      [...new Set(items.map((item) => item.styleTag).filter((style): style is string => !!style))].sort(),
     [items]
   );
 

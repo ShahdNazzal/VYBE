@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { ImagePlus, Loader2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CATEGORIES, CATEGORY_LABELS, SEASONS, SEASON_LABELS, STYLE_TAGS } from "@/lib/domain";
+import { extractClothingColors, type ExtractedColor } from "@/lib/color-extract";
 import type { Item } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -71,6 +72,7 @@ export function ItemForm({
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [detected, setDetected] = useState<ExtractedColor[] | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const set = <K extends keyof ItemFormValues>(key: K, value: ItemFormValues[K]) =>
@@ -84,6 +86,17 @@ export function ItemForm({
     }
     setUploading(true);
     try {
+      // Read the photo's dominant colors locally (canvas, no AI) while the
+      // upload is in flight — then pre-fill the colorway if it's still empty.
+      void extractClothingColors(file).then((colors) => {
+        if (colors.length === 0) return;
+        setDetected(colors);
+        setValues((prev) => ({
+          ...prev,
+          colorway: prev.colorway.trim() ? prev.colorway : colors[0].name,
+        }));
+      });
+
       const form = new FormData();
       form.append("file", file);
       const res = await fetch("/api/upload", { method: "POST", body: form });
@@ -164,6 +177,33 @@ export function ItemForm({
           }}
         />
         {uploadError && <p className="mt-2 text-xs text-destructive">{uploadError}</p>}
+        {detected && detected.length > 0 && (
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+              From the photo
+            </span>
+            {detected.map((color) => (
+              <button
+                key={color.name}
+                type="button"
+                onClick={() => set("colorway", color.name)}
+                title={`${Math.round(color.share * 100)}% of the photo`}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-all",
+                  values.colorway.trim().toLowerCase() === color.name.toLowerCase()
+                    ? "border-wine bg-blush/60 text-wine"
+                    : "border-sand bg-white text-muted-foreground hover:border-blush-deep hover:text-foreground"
+                )}
+              >
+                <span
+                  className="h-3 w-3 rounded-full border border-white shadow-sm"
+                  style={{ backgroundColor: color.hex }}
+                />
+                {color.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Name */}

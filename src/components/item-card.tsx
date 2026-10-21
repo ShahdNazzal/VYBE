@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CATEGORY_LABELS, SEASON_LABELS, type Category, type Season } from "@/lib/domain";
+import { parseColorway } from "@/lib/colors";
 import type { Item } from "@/lib/types";
 
 export function ItemCard({
@@ -24,6 +25,8 @@ export function ItemCard({
   onDelete: (item: Item) => void;
   index?: number;
 }) {
+  const colorFamily = parseColorway(item.colorway);
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 16 }}
@@ -72,8 +75,17 @@ export function ItemCard({
         <h3 className="truncate text-sm font-semibold leading-snug" title={item.name}>
           {item.name}
         </h3>
-        <p className="truncate text-xs text-muted-foreground">
-          {[item.colorway, item.brand].filter(Boolean).join(" · ") || "—"}
+        <p className="flex items-center truncate text-xs text-muted-foreground">
+          {colorFamily && (
+            <span
+              className="mr-1.5 inline-block h-2.5 w-2.5 shrink-0 rounded-full border border-white shadow-sm"
+              style={{ backgroundColor: colorFamily.hex }}
+              title={colorFamily.name}
+            />
+          )}
+          <span className="truncate">
+            {[item.colorway, item.brand].filter(Boolean).join(" · ") || "—"}
+          </span>
         </p>
         <div className="flex flex-wrap gap-1 pt-1">
           {item.styleTag && (

@@ -52,19 +52,37 @@ user's real wardrobe on the server.
 
 ## Getting started
 
+> Requires **Node.js 20 or newer** — check with `node -v` ([download](https://nodejs.org))
+
+### macOS / Linux
+
 ```bash
-# 1. Install dependencies
-bun install        # or npm install
-
-# 2. Configure environment
-cp .env.example .env   # then edit values (see below)
-
-# 3. Create the database schema
-bun run db:push
-
-# 4. Run the dev server
-bun run dev        # http://localhost:3000
+npm install
+cp .env.example .env      # then edit .env (see below)
+npx prisma db push
+npm run dev               # → http://localhost:3000
 ```
+
+### Windows (cmd.exe / PowerShell)
+
+Extract the zip, open a terminal in the project folder, then run —
+**no `#` comments, Windows has no `unzip`/`cp`/`tee`**:
+
+```bat
+cd C:\Users\you\Downloads\vybe-source
+npm install
+copy .env.example .env
+notepad .env              :: paste a random AUTH_SECRET, save & close
+npx prisma db push
+npm run dev               :: → http://localhost:3000
+```
+
+> If `npx prisma` asks to download prisma 8.x, press **N** — it means
+> `npm install` hasn't finished. Install first, then `npx` will use the
+> project's own pinned Prisma version.
+
+The first `npm run dev` compile takes a minute. To try a production build
+locally: `npm run build` then `npm run start`.
 
 ### Environment variables (`.env`)
 
@@ -76,26 +94,42 @@ bun run dev        # http://localhost:3000
 The LLM credentials used by `z-ai-web-dev-sdk` are managed by the platform SDK
 environment — no API key belongs in client code, and none is bundled client-side.
 
-### Running AI generation on your own machine
+### Enabling the real AI stylist on your machine
 
-Outfit generation calls a large language model through `z-ai-web-dev-sdk`,
-which is imported **only inside server code** — nothing AI-related reaches the
-browser. The SDK locates its credentials in a `.z-ai-config` JSON file, searched
-in this order: project root → `~/.z-ai-config` → `/etc/.z-ai-config`:
+Outfit generation calls a large language model **only from server code** —
+nothing AI-related reaches the browser. Two provider options, checked in order:
 
-```json
-{
-  "baseUrl": "YOUR_API_BASE_URL",
-  "apiKey": "YOUR_API_KEY"
-}
+**Option 1 — your own key (recommended for self-hosting).** Add to `.env`:
+
+```bash
+OPENAI_API_KEY="sk-..."
+# Optional overrides — any OpenAI-compatible service works:
+OPENAI_BASE_URL="https://api.openai.com/v1"   # OpenRouter: https://openrouter.ai/api/v1
+OPENAI_MODEL="gpt-4o-mini"                    # Groq free tier: llama-3.1-8b-instant
 ```
 
-Without a configured key, **everything else still works**: auth, closet
-management, uploads, the studio, saving and swapping all function normally.
-Outfit generation then falls back to the built-in rule-based stylist, which
-composes looks deterministically from your own wardrobe — every card is
-explicitly labeled "Rule-based stylist" (`source: "fallback"` in the API).
-AI-generated results are never fabricated or passed off as real AI output.
+> **Groq model note:** Groq rotates model IDs over time. If you see
+> `404 ... model_not_found`, your model ID was retired — list what your key
+> can currently use with
+> `curl.exe https://api.groq.com/openai/v1/models -H "Authorization: Bearer gsk_YOUR_KEY"`
+> and copy an id from the response.
+
+| Provider | `OPENAI_BASE_URL` | Example model | Cost |
+|----------|-------------------|---------------|------|
+| OpenAI | `https://api.openai.com/v1` (default) | `gpt-4o-mini` | paid |
+| OpenRouter | `https://openrouter.ai/api/v1` | any catalog id | has free models |
+| Groq | `https://api.groq.com/openai/v1` | `llama-3.1-8b-instant` or `openai/gpt-oss-120b` | free tier |
+| Ollama (local) | `http://localhost:11434/v1` | e.g. `llama3.2` | free, offline |
+
+**Option 2 — Z.ai platform config.** The bundled `z-ai-web-dev-sdk` reads a
+`.z-ai-config` JSON (`{"baseUrl": "...", "apiKey": "..."}`) from project root →
+`~/.z-ai-config` → `/etc/.z-ai-config`. This only exists inside the Z.ai
+platform environment.
+
+**Without any provider, everything still works**: auth, closet, uploads, the
+studio, saving and swapping. Generation falls back to the built-in rule-based
+stylist, and every card is explicitly labeled "Rule-based stylist"
+(`source: "fallback"` in the API). AI-generated results are never fabricated.
 
 ## Database schema
 
