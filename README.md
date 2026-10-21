@@ -104,21 +104,22 @@ nothing AI-related reaches the browser. Two provider options, checked in order:
 ```bash
 OPENAI_API_KEY="sk-..."
 # Optional overrides — any OpenAI-compatible service works:
-OPENAI_BASE_URL=""   # OpenRouter: 
+OPENAI_BASE_URL="https://api.openai.com/v1"   # OpenRouter: https://openrouter.ai/api/v1
 OPENAI_MODEL="gpt-4o-mini"                    # Groq free tier: llama-3.1-8b-instant
 ```
 
 > **Groq model note:** Groq rotates model IDs over time. If you see
 > `404 ... model_not_found`, your model ID was retired — list what your key
 > can currently use with
-> `curl.exe https://api.groq.com/openai/v1/models -H "Authorization: Bearer gsk_YOUR_KEY"`
+> `curl.exe <GROQ_BASE_URL>/models -H "Authorization: Bearer gsk_YOUR_KEY"`
+> (use the Groq base URL from the Groq API docs)
 > and copy an id from the response.
 
 | Provider | `OPENAI_BASE_URL` | Example model | Cost |
 |----------|-------------------|---------------|------|
 | OpenAI | `https://api.openai.com/v1` (default) | `gpt-4o-mini` | paid |
 | OpenRouter | `https://openrouter.ai/api/v1` | any catalog id | has free models |
-| Groq | `https://api.groq.com/openai/v1` | `llama-3.1-8b-instant` or `openai/gpt-oss-120b` | free tier |
+| Groq | your Groq base URL (see Groq API docs) | `llama-3.1-8b-instant` or `******` | free tier |
 | Ollama (local) | `http://localhost:11434/v1` | e.g. `llama3.2` | free, offline |
 
 **Option 2 — Z.ai platform config.** The bundled `z-ai-web-dev-sdk` reads a
