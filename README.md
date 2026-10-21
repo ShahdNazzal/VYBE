@@ -104,7 +104,7 @@ nothing AI-related reaches the browser. Two provider options, checked in order:
 ```bash
 OPENAI_API_KEY="sk-..."
 # Optional overrides — any OpenAI-compatible service works:
-OPENAI_BASE_URL="https://api.openai.com/v1"   # OpenRouter: https://openrouter.ai/api/v1
+OPENAI_BASE_URL=""   # OpenRouter: 
 OPENAI_MODEL="gpt-4o-mini"                    # Groq free tier: llama-3.1-8b-instant
 ```
 
