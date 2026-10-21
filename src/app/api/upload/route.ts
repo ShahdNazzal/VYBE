@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomBytes } from "crypto";
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
+import { putObject } from "@/lib/storage";
 import { handleApi, jsonError } from "@/lib/api-helpers";
 import { requireUser } from "@/lib/auth";
 
@@ -30,11 +29,10 @@ export async function POST(req: NextRequest) {
     if (!ext) return jsonError("Unsupported image format. Use JPG, PNG, WebP or GIF.", 415);
 
     const bytes = Buffer.from(await file.arrayBuffer());
-    const userDir = path.join(process.cwd(), "uploads", user.id);
-    await mkdir(userDir, { recursive: true });
 
     const filename = `${Date.now()}-${randomBytes(6).toString("hex")}.${ext}`;
-    await writeFile(path.join(userDir, filename), bytes);
+    // Dual-mode: Supabase Storage when configured, local ./uploads otherwise.
+    await putObject(`${user.id}/${filename}`, bytes, file.type);
 
     const url = `/api/uploads/${user.id}/${filename}`;
     return NextResponse.json({ url, filename }, { status: 201 });

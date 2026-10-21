@@ -88,10 +88,34 @@ export default async function LandingPage() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:py-24">
           <div className="relative z-10">
             <p className="eyebrow animate-fade-up text-primary">The digital wardrobe, restyled</p>
-            <h1 className="mt-5 animate-fade-up font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl" style={{ animationDelay: "0.1s" }}>
-              Wear what you own.
-              <span className="mt-1 block italic text-wine">Beautifully.</span>
-            </h1>
+            
+            
+<h1 className="mt-5 animate-fade-up font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl" style={{ animationDelay: "0.1s" }}>
+  Wear what you own.
+  <span className="mt-1 block italic text-wine">
+    <span className="relative strass-shimmer">
+      Beautifully.
+      
+      <svg className="strass-star h-3.5 w-3.5" style={{ top: "-38%", right: "2%", animationDelay: "0.2s", animationDuration: "3s" }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0 L14.8 9.2 L24 12 L14.8 14.8 L12 24 L9.2 14.8 L0 12 L9.2 9.2 Z" />
+      </svg>
+      <svg className="strass-star h-2.5 w-2.5" style={{ top: "-52%", left: "16%", animationDelay: "1.4s", animationDuration: "2.4s" }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0 L14.8 9.2 L24 12 L14.8 14.8 L12 24 L9.2 14.8 L0 12 L9.2 9.2 Z" />
+      </svg>
+      <svg className="strass-star h-2 w-2" style={{ top: "14%", right: "-5%", animationDelay: "2.5s", animationDuration: "3.4s" }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0 L14.8 9.2 L24 12 L14.8 14.8 L12 24 L9.2 14.8 L0 12 L9.2 9.2 Z" />
+      </svg>
+      <svg className="strass-star h-1.5 w-1.5" style={{ bottom: "-16%", left: "34%", animationDelay: "0.8s", animationDuration: "2.6s" }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0 L14.8 9.2 L24 12 L14.8 14.8 L12 24 L9.2 14.8 L0 12 L9.2 9.2 Z" />
+      </svg>
+      <svg className="strass-star h-2 w-2" style={{ top: "-20%", right: "34%", animationDelay: "1.9s", animationDuration: "2.2s" }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0 L14.8 9.2 L24 12 L14.8 14.8 L12 24 L9.2 14.8 L0 12 L9.2 9.2 Z" />
+      </svg>
+    </span>
+  </span>
+</h1>
+
+
             <p className="mt-6 max-w-md animate-fade-up text-base leading-relaxed text-muted-foreground sm:text-lg" style={{ animationDelay: "0.2s" }}>
               VYBE turns your closet into a personal styling house. Upload your pieces, pick an
               occasion, and receive three editorial looks — composed from your wardrobe and nothing

@@ -20,7 +20,8 @@ const generateSchema = z.object({
   mustIncludeItemId: z.string().nullable().optional().default(null),
 });
 
-export const maxDuration = 120;
+// 60s = Vercel Hobby ceiling; the stylist runs one 40s AI attempt there.
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   return handleApi(async () => {

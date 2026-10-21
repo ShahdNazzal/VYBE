@@ -371,6 +371,13 @@ export function buildFallbackOutfits(
 /* LLM call with timeout + retry                                       */
 /* ------------------------------------------------------------------ */
 
+// Serverless hosts (Vercel) cap request time — Hobby plan allows 60s total.
+// There we take one 40s AI attempt and fall back honestly instead of retrying
+// past the execution limit. Self-hosted keeps the full 75s + retry chain.
+const SERVERLESS = Boolean(process.env.VERCEL);
+const AI_TIMEOUT_MS = SERVERLESS ? 40_000 : 75_000;
+const AI_ATTEMPTS = SERVERLESS ? 1 : 2;
+
 /**
  * Provider 1 — any OpenAI-compatible chat API, activated by OPENAI_API_KEY.
  * No extra dependency: plain fetch against ${OPENAI_BASE_URL}/chat/completions.
@@ -392,7 +399,7 @@ async function callOpenAICompatible(
   );
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 75_000);
+  const timer = setTimeout(() => controller.abort(), AI_TIMEOUT_MS);
   try {
     const response = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
@@ -430,7 +437,7 @@ async function callLLM(messages: { role: "assistant" | "user"; content: string }
   const zai = await ZAI.create();
 
   const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error("AI request timed out")), 75_000)
+    setTimeout(() => reject(new Error("AI request timed out")), AI_TIMEOUT_MS)
   );
 
   const completion = (await Promise.race([
@@ -480,8 +487,8 @@ export async function generateOutfits(
 
   const messages = buildStylistMessages(wardrobe, occasion, style, constraints);
 
-  // Attempt 1 + corrective retry.
-  for (let attempt = 0; attempt < 2; attempt++) {
+  // Attempt 1 + corrective retry (single attempt on serverless).
+  for (let attempt = 0; attempt < AI_ATTEMPTS; attempt++) {
     try {
       const attemptMessages =
         attempt === 0

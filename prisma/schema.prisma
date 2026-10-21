@@ -1,5 +1,5 @@
 // VYBE — AI Fashion Styling Platform
-// Prisma schema (SQLite). In a Supabase/PostgreSQL deployment the same schema
+// Prisma schema (PostgreSQL — Supabase). Self-hosted SQLite variant of the same schema
 // works by switching the datasource provider to "postgresql".
 
 generator client {
@@ -7,8 +7,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")   // Transaction pooler (port 6543, ?pgbouncer=true)
+  directUrl = env("DIRECT_URL")     // Session pooler (port 5432) — used by prisma db push
 }
 
 model User {

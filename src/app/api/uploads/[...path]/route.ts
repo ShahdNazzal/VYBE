@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import path from "path";
 import { getCurrentUser } from "@/lib/auth";
+import { getSignedObjectUrl, isSupabaseStorage } from "@/lib/storage";
 
 export const runtime = "nodejs";
 
@@ -36,6 +37,16 @@ export async function GET(
   const ext = filename.split(".").pop()?.toLowerCase() ?? "";
   const contentType = CONTENT_TYPES[ext];
   if (!contentType) return new NextResponse("Unsupported type", { status: 415 });
+
+  // Supabase mode: redirect to a short-lived signed URL of the private object.
+  if (isSupabaseStorage()) {
+    const signed = await getSignedObjectUrl(`${userId}/${filename}`);
+    if (!signed) return new NextResponse("Not found", { status: 404 });
+    return NextResponse.redirect(signed, {
+      status: 302,
+      headers: { "Cache-Control": "private, max-age=300" },
+    });
+  }
 
   try {
     const buffer = await readFile(path.join(process.cwd(), "uploads", userId, filename));

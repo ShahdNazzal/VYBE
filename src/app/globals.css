@@ -216,3 +216,110 @@
 .animate-marquee {
   animation: marquee 36s linear infinite;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.strass-shimmer {
+  display: inline-block;
+  padding: 0.25em 0.15em 0.3em;
+  margin: -0.25em -0.15em -0.3em;
+  color: #6b2130;
+  background-image:
+    linear-gradient(
+      100deg,
+      transparent 44%,
+      rgba(244, 227, 189, 0.85) 48%,
+      rgba(255, 251, 233, 0.95) 50%,
+      rgba(244, 227, 189, 0.85) 52%,
+      transparent 56%
+    ),
+    linear-gradient(#6b2130, #6b2130);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 100% 0, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: strass-sweep 6s ease-in-out infinite;
+}
+
+@keyframes strass-sweep {
+  0%,
+  50% {
+    background-position: 100% 0, 0 0;
+  }
+  80%,
+  100% {
+    background-position: 0% 0, 0 0;
+  }
+}
+
+.strass-star {
+  position: absolute;
+  color: #d29a3a;
+  filter: drop-shadow(0 0 5px rgba(214, 160, 62, 0.7));
+  opacity: 0;
+  pointer-events: none;
+  animation: strass-twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes strass-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  15% {
+    opacity: 0;
+    transform: scale(0.3) rotate(10deg);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1) rotate(25deg);
+  }
+  55% {
+    opacity: 0;
+    transform: scale(0.25) rotate(45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strass-shimmer {
+    animation: none;
+  }
+  .strass-star {
+    display: none;
+  }
+}
+
+
+
+
+footer nav a { position: relative; }
+footer nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: #6b2130;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+footer nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+::selection { background: #6b2130; color: #fffbe9; }

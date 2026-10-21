@@ -5,7 +5,8 @@ import { handleApi, jsonError } from "@/lib/api-helpers";
 import { requireUser } from "@/lib/auth";
 import { replaceOutfitItem } from "@/lib/ai/stylist";
 
-export const maxDuration = 120;
+// 60s = Vercel Hobby ceiling; the stylist runs one 40s AI attempt there.
+export const maxDuration = 60;
 
 const replaceSchema = z.object({
   outfitId: z.string().min(1),
