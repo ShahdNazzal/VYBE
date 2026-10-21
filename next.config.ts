@@ -1,11 +1,11 @@
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Standalone output is for self-hosting (Windows/VPS). Vercel builds its own
-  // optimized output — enabling standalone there only bloats the deployment.
-  output: process.env.VERCEL ? undefined : "standalone",
-  // يجبر فيرصل يرفع ملفات صور الهيرو والخزانة الافتتاحية مع دوال السيرفر
+  // Standalone output is for self-hosting (Windows/VPS only).
+  // Vercel and Netlify build their own managed output — standalone must stay off there.
+  output:
+    process.env.VERCEL || process.env.NETLIFY ? undefined : "standalone",
+  // يجبر المنصة ترفع ملفات صور الهيرو والخزانة الافتتاحية مع دوال السيرفر
   outputFileTracingIncludes: {
     "/": ["./assets/imgsearch/**/*"],
     "/api/sample-wardrobe": ["./assets/imgsearch/**/*"],
@@ -17,22 +17,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-
-
-// import type { NextConfig } from "next";
-
-// const nextConfig: NextConfig = {
-//   // Standalone output is for self-hosting (Windows/VPS). Vercel builds its own
-//   // optimized output — enabling standalone there only bloats the deployment.
-//   output: process.env.VERCEL ? undefined : "standalone",
-//   /* config options here */
-//   typescript: {
-//     ignoreBuildErrors: true,
-//   },
-//   reactStrictMode: false,
-// };
-
-// export default nextConfig;
-
-
