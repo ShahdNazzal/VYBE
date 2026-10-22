@@ -12,7 +12,7 @@ user's real wardrobe on the server.
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="<img width="1178" height="901" alt="image" src="https://github.com/user-attachments/assets/5e0a6367-763e-46e5-8ec9-2404983fc9bc" />
+      <img src="https://github.com/user-attachments/assets/5e0a6367-763e-46e5-8ec9-2404983fc9bc" />
 " />
     </td>
     <td align="center" width="50%">
