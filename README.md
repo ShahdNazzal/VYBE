@@ -20,7 +20,8 @@ user's real wardrobe on the server.
   </tr>
   <tr>
     <td align="center" width="50%">
-      <img src="https://github.com/user-attachments/assets/df065160-69a5-4135-ae28-a5c5c0af272c" width="100%" alt="Screenshot 3" />
+      <img src="https://github.com/user-attachments/assets/e9a10f14-efa3-4987-98d6-e2dd179187f1" />
+/>
     </td>
     <td align="center" width="50%">
       <img src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" width="100%" alt="Screenshot 4" />
