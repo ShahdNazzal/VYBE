@@ -326,11 +326,4 @@ footer nav a:hover::after { transform: scaleX(1); transform-origin: left; }
 
 
 
-div[style*="netlify"] { display: none !important; }
-
-
-#netlify-drawer-root {
-  display: none !important;
-}
-
 
