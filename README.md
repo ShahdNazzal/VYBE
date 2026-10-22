@@ -7,12 +7,13 @@ their closet** — every suggested item is validated against the authenticated
 user's real wardrobe on the server.
 
 
-
 ## 📸 Screenshots
 
 <table>
   <tr>
-    
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/d5ae83f8-ffef-4e62-8a54-d91cbb6315d7" width="100%" alt="Screenshot 1" />
+    </td>
     <td align="center" width="50%">
       <img src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" width="100%" alt="Screenshot 2" />
     </td>
@@ -34,6 +35,8 @@ user's real wardrobe on the server.
     </td>
   </tr>
 </table>
+
+
 
 ## Feature map
 
