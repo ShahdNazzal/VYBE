@@ -8,23 +8,34 @@ user's real wardrobe on the server.
 
 
 
+## 📸 Screenshots
 
-## screenshot
-
-
-<img width="1251" height="896" alt="image" src="https://github.com/user-attachments/assets/d5ae83f8-ffef-4e62-8a54-d91cbb6315d7" />
-
-<img width="486" height="500" alt="image" src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" />
-
-
-<img width="1683" height="898" alt="image" src="https://github.com/user-attachments/assets/df065160-69a5-4135-ae28-a5c5c0af272c" />
-
-<img width="1157" height="902" alt="image" src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" />
-
-<img width="897" height="600" alt="image" src="https://github.com/user-attachments/assets/866d9322-7db6-4e4c-8eac-615bc29ec08a" />
-
-<img width="1123" height="840" alt="image" src="https://github.com/user-attachments/assets/db16597b-c07d-447b-a503-d915f835b13e" />
-
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/d5ae83f8-ffef-4e62-8a54-d91cbb6315d7" width="100%" alt="Screenshot 1" />
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" width="100%" alt="Screenshot 2" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/df065160-69a5-4135-ae28-a5c5c0af272c" width="100%" alt="Screenshot 3" />
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" width="100%" alt="Screenshot 4" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/866d9322-7db6-4e4c-8eac-615bc29ec08a" width="100%" alt="Screenshot 5" />
+    </td>
+    <td align="center" width="50%">
+      <img src="https://github.com/user-attachments/assets/db16597b-c07d-447b-a503-d915f835b13e" width="100%" alt="Screenshot 6" />
+    </td>
+  </tr>
+</table>
 
 ## Feature map
 
