@@ -323,3 +323,7 @@ footer nav a::after {
 footer nav a:hover::after { transform: scaleX(1); transform-origin: left; }
 
 ::selection { background: #6b2130; color: #fffbe9; }
+
+
+
+div[style*="netlify"] { display: none !important; }
