@@ -14,7 +14,7 @@ user's real wardrobe on the server.
 <p align="center">
 
   
-  <img src="https://github.com/user-attachments/assets/5de7ddc2-eeaa-4d3d-97f0-3c8c08376d58" width="49%" />
+  <img src="https://github.com/user-attachments/assets/ae670a0e-9964-4554-9b32-a769e101a96f" width="49%" />
   <img src="https://github.com/user-attachments/assets/5e0a6367-763e-46e5-8ec9-2404983fc9bc" width="49%" />
 </p>
 
