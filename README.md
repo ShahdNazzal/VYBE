@@ -24,7 +24,7 @@ user's real wardrobe on the server.
 
 
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/37e5fa37-78f1-4cba-ae36-728e8de370c5" width="49%" />
+   <img src="https://github.com/user-attachments/assets/0ebb7d6f-0294-477a-913a-651ccf42dac3" width="49%" />
 
   <img src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" width="49%" />
 </p>
@@ -36,7 +36,6 @@ user's real wardrobe on the server.
 
   <img src="https://github.com/user-attachments/assets/866d9322-7db6-4e4c-8eac-615bc29ec08a" width="49%" />
 
-  <img src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" width="49%" />
 </p>
 
 ## Feature map
