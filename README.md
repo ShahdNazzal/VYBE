@@ -6,7 +6,26 @@ editorial-quality outfit combinations composed exclusively from the pieces in
 their closet** — every suggested item is validated against the authenticated
 user's real wardrobe on the server.
 
-![Stack](https://img.shields.io/badge/Next.js%2016-App%20Router-6b2130) ![TS](https://img.shields.io/badge/TypeScript-strict-6b2130) ![Prisma](https://img.shields.io/badge/Prisma-SQLite-6b2130)
+
+
+
+## screenshot
+
+<img width="1240" height="893" alt="image" src="https://github.com/user-attachments/assets/54ba6842-6e1f-467e-8fdd-95a7b7c6a6e5" />
+
+<img width="1251" height="896" alt="image" src="https://github.com/user-attachments/assets/d5ae83f8-ffef-4e62-8a54-d91cbb6315d7" />
+
+<img width="486" height="500" alt="image" src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" />
+
+
+<img width="1683" height="898" alt="image" src="https://github.com/user-attachments/assets/df065160-69a5-4135-ae28-a5c5c0af272c" />
+
+<img width="1157" height="902" alt="image" src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" />
+
+<img width="897" height="600" alt="image" src="https://github.com/user-attachments/assets/866d9322-7db6-4e4c-8eac-615bc29ec08a" />
+
+<img width="1123" height="840" alt="image" src="https://github.com/user-attachments/assets/db16597b-c07d-447b-a503-d915f835b13e" />
+
 
 ## Feature map
 
