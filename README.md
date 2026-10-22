@@ -10,12 +10,11 @@ user's real wardrobe on the server.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e9a10f14-efa3-4987-98d6-e2dd179187f1" width="49%" />
-  <img src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" width="49%" />
+  <img src="https://github.com/user-attachments/assets/5e0a6367-763e-46e5-8ec9-2404983fc9bc" width="49%" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5e0a6367-763e-46e5-8ec9-2404983fc9bc" width="49%" />
-
+  <img src="https://github.com/user-attachments/assets/3f80a91f-19dd-433f-adf5-0c367858e4f8" width="49%" />
   <img src="https://github.com/user-attachments/assets/d88ac4d1-8b90-4cbf-bc66-3dad0e6b2d10" width="49%" />
 </p>
 
