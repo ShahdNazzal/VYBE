@@ -11,7 +11,6 @@ user's real wardrobe on the server.
 
 ## screenshot
 
-<img width="1240" height="893" alt="image" src="https://github.com/user-attachments/assets/54ba6842-6e1f-467e-8fdd-95a7b7c6a6e5" />
 
 <img width="1251" height="896" alt="image" src="https://github.com/user-attachments/assets/d5ae83f8-ffef-4e62-8a54-d91cbb6315d7" />
 
